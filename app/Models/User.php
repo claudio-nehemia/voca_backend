@@ -6,12 +6,13 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -53,4 +54,34 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function vocabularies()
+    {
+        return $this->belongsToMany(Vocabulary::class, 'vocabulary_user')->withTimestamps();
+    }
+
+    public function writings()
+    {
+        return $this->belongsToMany(Writing::class, 'writing_user')
+            ->withPivot('answer', 'point_earned')
+            ->withTimestamps();
+    }
+
+    public function speakings()
+    {
+        return $this->belongsToMany(Speaking::class, 'speaking_user')
+            ->withPivot('audio_url', 'point_earned')
+            ->withTimestamps();
+    }
+
+    public function achievements()
+    {
+        return $this->belongsToMany(Achievement::class, 'achievement_user')
+            ->withPivot('unlocked_at')
+            ->withTimestamps();
+    }
 }
+
+
+
+

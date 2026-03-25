@@ -19,6 +19,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             AdminSeeder::class,
+            UserSeeder::class,
+            VocabularySeeder::class,
+            WritingSeeder::class,
+            SpeakingSeeder::class,
+            AchievementSeeder::class,
         ]);
     }
 }

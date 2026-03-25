@@ -17,4 +17,12 @@ class Writing extends Model
     {
         return $this->belongsTo(WritingTheme::class, 'writing_theme_id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'writing_user')
+            ->withPivot('answer', 'point_earned')
+            ->withTimestamps();
+    }
 }
+

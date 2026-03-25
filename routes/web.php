@@ -25,7 +25,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('mobile-users/{user}/activate', [\App\Http\Controllers\MobileUserController::class, 'activate'])->name('mobile-users.activate');
     Route::resource('mobile-users', \App\Http\Controllers\MobileUserController::class);
     Route::get('top-students', [\App\Http\Controllers\LeaderboardController::class, 'index'])->name('top-students.index');
+    Route::get('user-activity', [\App\Http\Controllers\UserActivityController::class, 'index'])->name('user-activity.index');
+    Route::get('user-activity/{user}/writing', [\App\Http\Controllers\UserActivityController::class, 'userWritingDetails'])->name('user-activity.writing');
+    Route::get('user-activity/{user}/vocab', [\App\Http\Controllers\UserActivityController::class, 'userVocabDetails'])->name('user-activity.vocab');
+    Route::get('user-activity/{user}/speaking', [\App\Http\Controllers\UserActivityController::class, 'userSpeakingDetails'])->name('user-activity.speaking');
+
+
     Route::resource('achievements', \App\Http\Controllers\AchievementController::class)->except(['create', 'show']);
+
     
     Route::get('dashboard', function() {
         return redirect()->route('vocabularies.index');

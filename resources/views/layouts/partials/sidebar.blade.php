@@ -45,10 +45,11 @@
             <i data-lucide="trophy" style="width: 18px; height: 18px; margin-right: 0.75rem;"></i>
             Top Students
         </a>
-        <a href="#" class="sidebar-item" style="display: flex; align-items: center; padding: 0.75rem 1rem; border-radius: 0.5rem; text-decoration: none; color: var(--text-secondary); margin-bottom: 0.25rem;">
+        <a href="{{ route('user-activity.index') }}" class="sidebar-item {{ request()->routeIs('user-activity.*') ? 'active' : '' }}" style="display: flex; align-items: center; padding: 0.75rem 1rem; border-radius: 0.5rem; text-decoration: none; color: var(--text-secondary); margin-bottom: 0.25rem;">
             <i data-lucide="activity" style="width: 18px; height: 18px; margin-right: 0.75rem;"></i>
             User Activity
         </a>
+
     </div>
 
     <div style="padding: 1.5rem; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 1rem;">

@@ -127,10 +127,15 @@
 
         /* Badge Styles */
         .badge {
-            padding: 0.25rem 0.5rem;
-            border-radius: 9999px;
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.5rem;
             font-size: 0.75rem;
-            font-weight: 500;
+            font-weight: 600;
+            line-height: 1.4;
+            max-width: 150px;
+            text-align: center;
+            vertical-align: middle;
         }
 
         .badge-theme {
@@ -138,6 +143,7 @@
             color: #2563eb;
             border: 1px solid #dbeafe;
         }
+
 
         /* Modal Styles */
         .modal {
